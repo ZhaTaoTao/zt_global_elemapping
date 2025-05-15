@@ -1,0 +1,23 @@
+<launch>
+
+    <!-- <param name="/use_sim_time" value="false"/> -->
+
+    <node pkg="tf" type="static_transform_publisher" name="odom_to_base"
+    args="0 0 0 0 0 0 map odom 100"/>
+
+    <!-- 必须在所有依赖它的静态transform之前启动 -->
+    <!-- <node name="odom_to_tf" 
+        pkg="global_elevation_mapping" 
+        type="odom_to_tf.py"
+        output="screen"/> -->
+
+    <!-- 雷达到机器人基座的安装位置（示例值需实测） -->
+    <!-- <node pkg="tf" type="static_transform_publisher" name="base_to_lidar"
+        args="0 0 0.2 0 0 0 base_footprint rslidar 100"/> -->
+    
+    <!-- 运行全局地图融合节点 -->
+    <node pkg="global_elevation_mapping" type="global_map_fusion_k_online_pub.py" name="global_mapper" output="screen">
+        <!-- <param name="resolution" value="0.04"/>
+        <param name="map_size" value="100"/> -->
+    </node>
+</launch>
