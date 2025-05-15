@@ -29,3 +29,5 @@ source ./devel/setup.bash
     roslaunch global_elevation_mapping global_mapping_online_pub.launch 
     从 rviz 添加 /global_elevation_map 话题进行可视化
     注意：地图不要设置太大，否则 rviz 会死机。
+
+最后提醒：代码中很多用的是笔者的绝对路径，因此克隆后记得修改相关路径。
