@@ -3,8 +3,10 @@ catkin build global_elevation_mapping
 
 source ./devel/setup.bash
 
+elevation_mapping_cupy_ws 代码 github 链接：https://github.com/leggedrobotics/elevation_mapping_cupy.git
 
 离线建图使用流程：
+
     1.编译好后，播放rosbag包，运行elevation_mapping_cupy_ws中的建图launch（设置好局部地图分辨率与范围），
     然后启动这个包的 global_mapping_underline.launch（也就是运行 01local_map_data_underline.py） 
     注意选好话题和图层，这是第一步，这里会采集局部地图的热力图、txt高程数据和odom坐标转换数据
