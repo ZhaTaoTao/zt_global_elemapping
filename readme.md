@@ -32,4 +32,16 @@ elevation_mapping_cupy_ws 代码 github 链接：https://github.com/leggedroboti
     从 rviz 添加 /global_elevation_map 话题进行可视化
     注意：地图不要设置太大，否则 rviz 会死机。
 
+注意：
+    使用在线方法生成全局地图时，代码里使用了卡尔曼滤波，因为之前默认是处理elevation层的原始高程数据。
+
+    卡尔曼滤波的假设：
+        系统模型是线性的（高程值随时间变化可以建模为线性过程）。
+        噪声是高斯白噪声（过程噪声和测量噪声符合正态分布）。
+        输入数据（z_local）是原始测量值，包含独立的高斯噪声。
+        
+    在切换其他图层（smooth、inpaint、min_filter）时，在 rviz 中添加 /global_elevation_map 话题后，
+    height layer 和 color layer 都要选择你换的图层，此外，其他图层的数据已经经过相关处理，数据不再符合
+    卡尔曼滤波的假设（独立高斯噪声），因此建议自行将卡尔曼滤波删除，使用其他的融合方法。
+
 最后提醒：代码中很多用的是笔者的绝对路径，因此克隆后记得修改相关路径。
