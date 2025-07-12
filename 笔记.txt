@@ -1,0 +1,21 @@
+对于elevation_mapping_cupy_ws中的建图程序发布话题/elevation_mapping/elevation_map_filter的各个图层: 
+
+    min_filter：最小值滤波后的保守高程，适合安全路径规划。
+    smooth：平滑滤波后的高程，保留地形细节，适合分析和可视化。
+    inpaint：内插修复后的高程，填充空洞，适合连续地形建模。
+    elevation：原始高程，参考和调试用。
+
+
+
+注意：
+    使用在线方法生成全局地图时，代码里使用了卡尔曼滤波，因为之前默认是处理elevation层的原始高程数据。
+    global_map_fusion_k_online_rviz.py 和 global_map_fusion_k_online.py 并没有太大区别，前者设置的地图尺寸更小，适合rviz可视化。
+
+    卡尔曼滤波的假设：
+        系统模型是线性的（高程值随时间变化可以建模为线性过程）。
+        噪声是高斯白噪声（过程噪声和测量噪声符合正态分布）。
+        输入数据（z_local）是原始测量值，包含独立的高斯噪声。
+        
+    在切换其他图层（smooth、inpaint、min_filter）时，在 rviz 中添加 /global_elevation_map 话题后，
+    height layer 和 color layer 都要选择你换的图层，此外，其他图层的数据已经经过相关处理，数据不再符合
+    卡尔曼滤波的假设（独立高斯噪声），因此建议自行将卡尔曼滤波删除，使用其他的融合方法。

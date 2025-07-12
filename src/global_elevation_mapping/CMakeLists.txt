@@ -39,7 +39,7 @@ catkin_install_python(PROGRAMS
   scripts/02global_map_fusion_underline.py
   scripts/03txt_to_gray_cut-1.py
   scripts/global_map_fusion_k_online.py
-  scripts/global_map_fusion_k_online_pub.py
+  scripts/global_map_fusion_k_online_rviz.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 

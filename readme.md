@@ -28,7 +28,8 @@ elevation_mapping_cupy_ws 代码 github 链接：https://github.com/leggedroboti
     roslaunch global_elevation_mapping global_mapping_online.launch 
 
 在线建图并发布使用流程：
-    roslaunch global_elevation_mapping global_mapping_online_pub.launch 
+    （global_map_fusion_k_online_rviz.py 和 global_map_fusion_k_online.py 并没有太大区别，前者设置的地图尺寸小，适合rviz可视化。）
+    roslaunch global_elevation_mapping global_mapping_online_rviz.launch 
     从 rviz 添加 /global_elevation_map 话题进行可视化
     注意：地图不要设置太大，否则 rviz 会死机。
 
