@@ -9,6 +9,10 @@ elevation_mapping_cupy_ws 代码 github 链接：https://github.com/leggedroboti
 
     1.编译好后，播放rosbag包，运行elevation_mapping_cupy_ws中的建图launch（设置好局部地图分辨率与范围），
     然后启动这个包的 global_mapping_underline.launch（也就是运行 01local_map_data_underline.py） 
+
+    roslaunch global_elevation_mapping global_mapping_underline.launch 
+
+    (这里最好用 launch 运行，别直接用 python，不然可能会有些小问题-----------------------------------)
     注意选好话题和图层，这是第一步，这里会采集局部地图的热力图、txt高程数据和odom坐标转换数据
     （注意：坐标转换数据中，x 和 y 轴方向是反的，四元数旋转用不上，因为发布的局部地图没有旋转）。
 
